@@ -4,6 +4,15 @@ wallets.json
 *.pem
 .env
 
+# MCP (kept local, not published)
+mcp/
+chain_mcp.py
+test_mcp.py
+test_mcp_remote.py
+opencode.json
+mcp/claude-desktop.json.example
+mcp/opencode.json.example
+
 # Blockchain data (node state)
 node_chain.json
 *.chain.json

@@ -3,11 +3,6 @@
 Prototype ของบล็อกเชนที่เป็นส่วนตัว (privacy-preserving) สถาปัตยกรรมแบบ
 **3 โปรแกรมแยกกันพร้อม UI** ใช้ Python 3.8+ และ standard library เท่านั้น
 
-> **การ Deploy บนเซิร์ฟเวอร์ + ระบบ MCP**: โปรเจกต์นี้ถูกติดตั้งที่
-> `dritestudio@82.26.104.210:/drivecoinproject` พร้อม headless node
-> (systemd `drivecoin-node`) และ MCP servers 2 ตัวที่ AI ใช้ควบคุมได้
-> ดูรายละเอียดที่ `mcp/README.md`
->
 > **เว็บสาธารณะ**: <https://drivecoinproject.online> (landing page + API
 > แบบ read-only + หน้าดาวน์โหลด miner `/download/`) และ **block explorer**
 > ที่ <https://scan.drivecoinproject.online> — ดูบล็อก/tx/mempool ได้จากทุกที่
@@ -59,8 +54,6 @@ Workflow แนะนำ:
 | `wallet_app.py` | โปรแกรม **Wallet** (UI: หลาย wallet, ส่งเงิน, แท็บ Lightning, ประวัติ) |
 | `privatechain.py` | เวอร์ชันไฟล์เดียวดั้งเดิม (demo รวม + attack simulation; reward คงที่ 50 COIN ก่อนมี halving/cap — เก็บไว้เป็นตัวอย่าง) |
 | `test_e2e.py` | ทดสอบ end-to-end ผ่าน HTTP จริง รวม Lightning ครบวงจร (headless) |
-| `test_mcp.py` | ทดสอบ MCP server (chain_mcp.py) แบบ end-to-end ผ่าน stdio |
-| `test_mcp_remote.py` | ทดสอบ MCP ทั้งสองตัวผ่าน SSH จริง (แบบที่ OpenCode เรียก) |
 | `node_headless.py` | REST API node แบบไม่มี UI สำหรับเซิร์ฟเวอร์ (systemd) |
 | `miner_lib.py` | เอนจินขุดแบบ standalone (HTTP + multiprocess grinding + wallet scan) — ใช้ร่วมโดย miner.py/miner_ui.py |
 | `miner.py` | **Miner CLI** แบบพกพา (Windows/Linux, pure stdlib) — ขุดเชนสาธารณะผ่าน HTTPS |
@@ -71,7 +64,6 @@ Workflow แนะนำ:
 | `wallet_ui.py` | **Wallet GUI** แบบพกพา (Tkinter) — หลาย wallet, สด, ส่ง tx |
 | `README-WALLET.md` | เอกสาร wallet แบบ standalone (ใช้งาน, build, แก้ปัญหา) |
 | `README-NODE.md` | เอกสาร node แบบ standalone (รันเครือข่ายเอง, P2P, API, ความปลอดภัย) |
-| `chain_mcp.py` | MCP server ควบคุมบล็อกเชน (13 tools: wallet/mining/LN) — pure stdlib |
 | `test_gui_flow.py` | ทดสอบ flow ของ 3 แอป UI ร่วมกัน (headless) |
 | `diagnose.py` | เครื่องมือตรวจว่าเงินอยู่ไหน (on-chain / pending / unclaimed) |
 
