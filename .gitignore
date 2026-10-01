@@ -1,0 +1,37 @@
+# Secrets / keys — NEVER commit
+wallets.json
+*.key
+*.pem
+.env
+
+# MCP (kept local, not published)
+mcp/
+chain_mcp.py
+test_mcp.py
+test_mcp_remote.py
+opencode.json
+mcp/claude-desktop.json.example
+mcp/opencode.json.example
+
+# Blockchain data (node state)
+node_chain.json
+*.chain.json
+mempool*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Logs / databases
+*.log
+*.db
+*.sqlite3
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
