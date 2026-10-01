@@ -1,0 +1,19 @@
+[Unit]
+Description=DriveCoin headless node (PrivateChain REST API + Lightning relay)
+After=network.target
+
+[Service]
+Type=simple
+User=dritestudio
+WorkingDirectory=/drivecoinproject
+ExecStart=/usr/bin/python3 /drivecoinproject/node_headless.py --bind 127.0.0.1 --port 8000 --datafile /drivecoinproject/node_chain.json
+Restart=always
+RestartSec=3
+# hardened a little (the API has no auth -> keep it on localhost only)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/drivecoinproject
+
+[Install]
+WantedBy=multi-user.target

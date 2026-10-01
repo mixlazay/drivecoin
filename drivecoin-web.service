@@ -1,0 +1,20 @@
+[Unit]
+Description=DriveCoin landing page (HTTPS static site + read-only chain API proxy)
+After=network.target drivecoin-node.service
+Wants=drivecoin-node.service
+
+[Service]
+Type=simple
+User=dritestudio
+WorkingDirectory=/drivecoinproject
+ExecStart=/usr/bin/python3 /drivecoinproject/web_server.py --bind 0.0.0.0 --port 443 --http-port 80 --web /drivecoinproject/web --tls /drivecoinproject/tls --node http://127.0.0.1:8000
+Restart=always
+RestartSec=3
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

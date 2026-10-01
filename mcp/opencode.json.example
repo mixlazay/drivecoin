@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "drivecoin-fs": {
+        "type": "local",
+        "command": [
+          "ssh",
+          "dritestudio@82.26.104.210",
+          "node",
+          "/drivecoinproject/mcp/filesystem/node_modules/@modelcontextprotocol/server-filesystem/dist/index.js",
+          "/drivecoinproject"
+        ]
+      },
+      "drivecoin-chain": {
+        "type": "local",
+        "command": ["ssh", "dritestudio@82.26.104.210", "python3", "/drivecoinproject/chain_mcp.py"],
+        "environment": { "CHAIN_MCP_URL": "http://127.0.0.1:8000" }
+      }
+    }
+  }
+}

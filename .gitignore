@@ -1,0 +1,28 @@
+# Secrets / keys — NEVER commit
+wallets.json
+*.key
+*.pem
+.env
+
+# Blockchain data (node state)
+node_chain.json
+*.chain.json
+mempool*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Logs / databases
+*.log
+*.db
+*.sqlite3
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
