@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DriveCoin Explorer — blocks, transactions, mempool</title>
+<meta name="description" content="Block explorer for the DriveCoin privacy blockchain: browse blocks, transactions, ring signatures, commitments and the mempool in real time.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/scan.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="/" aria-label="Explorer home">
+    <svg width="24" height="24" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <circle cx="32" cy="32" r="29" stroke="#4fc3a1" stroke-width="4"/>
+      <path d="M35 12 L19 37 h11 L29 52 L47 27 h-12 z" fill="#f0b429"/>
+    </svg>
+    <span>DriveCoin <b class="grad">Explorer</b></span>
+  </a>
+  <form class="search" id="search-form">
+    <input id="search-input" type="text" spellcheck="false" autocomplete="off"
+           placeholder="block height · block hash · txid">
+    <button type="submit">Search</button>
+  </form>
+  <a class="home-link" href="https://drivecoinproject.online">↗ main site</a>
+</nav>
+
+<header class="statsbar">
+  <div class="stat"><div class="v mono" id="s-height">–</div><div class="k">height</div></div>
+  <div class="stat"><div class="v mono" id="s-diff">–</div><div class="k">difficulty</div></div>
+  <div class="stat"><div class="v mono" id="s-emission">–</div><div class="k">emission / 50M</div></div>
+  <div class="stat"><div class="v mono" id="s-reward">–</div><div class="k">next reward</div></div>
+  <div class="stat"><div class="v mono" id="s-mempool">–</div><div class="k">mempool</div></div>
+  <div class="stat"><div class="v mono" id="s-halving">–</div><div class="k">blocks to halving</div></div>
+</header>
+
+<div class="netline"><span class="dot"></span><span id="net-label">connecting…</span></div>
+
+<main id="view"><p class="muted pad">loading…</p></main>
+
+<footer>
+  <div><b>DriveCoin Explorer</b> · scan.drivecoinproject.online</div>
+  <div class="muted">amounts are hidden by Pedersen commitments — the explorer shows cryptographic shape, never values</div>
+</footer>
+
+<script src="/scan.js"></script>
+</body>
+</html>

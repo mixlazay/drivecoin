@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DriveCoin — private payments, instant settlement</title>
+<meta name="description" content="A CryptoNote-style privacy blockchain: stealth addresses, ring signatures, confidential amounts, zero-knowledge range proofs, Lightning instant payments and a fixed 50 million coin supply.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="/" aria-label="DriveCoin home">
+    <svg width="26" height="26" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <circle cx="32" cy="32" r="29" stroke="#4fc3a1" stroke-width="4"/>
+      <path d="M35 12 L19 37 h11 L29 52 L47 27 h-12 z" fill="#f0b429"/>
+    </svg>
+    <span>DriveCoin</span>
+  </a>
+  <div class="links">
+    <a href="#features">Features</a>
+    <a href="#live">Live chain</a>
+    <a href="#speed">Speed</a>
+    <a href="#tech">Technology</a>
+    <a href="#api">API</a>
+    <a href="https://scan.drivecoinproject.online">Explorer ↗</a>
+    <a class="btn-nav" href="/download/"><span class="dl-ic">⬇</span> Download</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="badge" id="net-badge"><span class="dot"></span><span id="net-label">connecting…</span></div>
+  <h1>Private by protocol.<br><span class="grad">Instant by design.</span></h1>
+  <p class="sub">DriveCoin hides <b>who sends</b>, <b>who receives</b> and <b>how much</b> — every transaction is verified by zero-knowledge proofs, and Lightning payments settle in about 40 milliseconds.</p>
+  <div class="cta">
+    <a class="btn primary" href="#live">Explore the live chain</a>
+    <a class="btn ghost" href="#tech">How it works</a>
+  </div>
+  <div class="statbar">
+    <div class="stat"><div class="v mono" id="s-height">–</div><div class="k">block height</div></div>
+    <div class="stat"><div class="v mono" id="s-emission">–</div><div class="k">emission / 50M</div></div>
+    <div class="stat"><div class="v mono" id="s-reward">–</div><div class="k">next reward</div></div>
+    <div class="stat"><div class="v mono" id="s-mempool">–</div><div class="k">mempool</div></div>
+  </div>
+</header>
+
+<section id="features" class="section">
+  <h2>Privacy that is not optional</h2>
+  <p class="lead">Every property below is enforced by cryptography at the protocol level — not by policy, not by a trusted third party.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="ic">🕶️</div>
+      <h3>Stealth addresses</h3>
+      <p>Every payment creates a fresh one-time destination key. Outputs cannot be linked back to your wallet — not even by the sender.</p>
+      <code>P = Hs(r·A)·G + B</code>
+    </div>
+    <div class="card">
+      <div class="ic">🎭</div>
+      <h3>Ring signatures</h3>
+      <p>Each spend is mixed with decoy outputs from the chain. Observers can prove <i>someone</i> in the ring authorised it — but not <i>who</i>.</p>
+      <code>s<sub>π</sub> = α − c<sub>π</sub>·x</code>
+    </div>
+    <div class="card">
+      <div class="ic">🙈</div>
+      <h3>Confidential amounts</h3>
+      <p>Amounts live inside Pedersen commitments. Nodes verify the balance equation homomorphically without ever seeing a number.</p>
+      <code>C = v·G + m·H</code>
+    </div>
+    <div class="card">
+      <div class="ic">✨</div>
+      <h3>Zero-knowledge range proofs</h3>
+      <p>Every output proves 0 ≤ v &lt; 2³² without revealing v — negative amounts and money-printing are mathematically impossible.</p>
+      <code>Σ 2<sup>i</sup>·C<sub>i</sub> − C = δ·H</code>
+    </div>
+    <div class="card">
+      <div class="ic">⚡</div>
+      <h3>Lightning instant</h3>
+      <p>Open a channel once (one block), then pay in ~40 ms with no block waits. Cooperative closes settle final balances back on-chain.</p>
+      <code>state(n+1) requires sig<sub>a</sub> AND sig<sub>b</sub></code>
+    </div>
+    <div class="card">
+      <div class="ic">🪙</div>
+      <h3>50M hard cap</h3>
+      <p>Exactly 50,000,000 DCC will ever exist. Subsidy starts at 120 DCC per block and halves every 210,000 blocks — auditable by anyone.</p>
+      <code>min(120 ≫ ⌊h / 210,000⌋, cap − Σ)</code>
+    </div>
+  </div>
+</section>
+
+<section id="live" class="section">
+  <h2>Live chain</h2>
+  <p class="lead">Everything below is read directly from a running node — auto-refreshing every 5 seconds.</p>
+
+  <div class="grid stats-grid">
+    <div class="statcard"><div class="v" id="v-height">–</div><div class="k">height</div></div>
+    <div class="statcard"><div class="v" id="v-diff">–</div><div class="k">difficulty</div></div>
+    <div class="statcard"><div class="v" id="v-outputs">–</div><div class="k">outputs</div></div>
+    <div class="statcard"><div class="v" id="v-images">–</div><div class="k">spent key images</div></div>
+    <div class="statcard"><div class="v" id="v-mempool">–</div><div class="k">mempool txs</div></div>
+    <div class="statcard"><div class="v" id="v-halving">–</div><div class="k">blocks to halving</div></div>
+  </div>
+
+  <div class="emit">
+    <div class="emit-head"><span>emission</span><span class="mono" id="e-num">–</span></div>
+    <div class="bar"><div class="fill" id="e-fill"></div></div>
+    <div class="emit-foot"><span>0</span><span>50,000,000 DCC hard cap</span></div>
+  </div>
+
+  <h3 class="sub-h">recent blocks</h3>
+  <div class="tablewrap">
+    <table class="blocks">
+      <thead><tr><th>height</th><th>hash</th><th>txs</th><th>difficulty</th><th>reward</th><th>time</th></tr></thead>
+      <tbody id="blocks-body"><tr><td colspan="6" class="muted">loading…</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="speed" class="section">
+  <h2>Monero vs DriveCoin — settlement speed</h2>
+  <p class="lead">Time until a payment is settled. Monero confirms on-chain every
+  ~2 minutes; DriveCoin's Lightning channels move money in ~40 milliseconds —
+  measured on this chain.</p>
+
+  <div class="race" id="race">
+    <div class="race-row dc-ln">
+      <div class="race-label"><span class="ric">⚡</span> DriveCoin · Lightning channel</div>
+      <div class="race-track"><div class="race-fill" data-w="11"></div></div>
+      <div class="race-time mono">~40 ms</div>
+    </div>
+    <div class="race-row dc-chain">
+      <div class="race-label"><span class="ric">⛓️</span> DriveCoin · on-chain (1 block)</div>
+      <div class="race-track"><div class="race-fill" data-w="47"></div></div>
+      <div class="race-time mono">~1–6 s</div>
+    </div>
+    <div class="race-row xmr">
+      <div class="race-label"><span class="ric">⚫</span> Monero · on-chain (1 confirmation)</div>
+      <div class="race-track"><div class="race-fill" data-w="74"></div></div>
+      <div class="race-time mono">~2 min</div>
+    </div>
+    <div class="race-row xmr">
+      <div class="race-label"><span class="ric">🏦</span> Monero · exchange-grade (10 confirmations)</div>
+      <div class="race-track"><div class="race-fill" data-w="92"></div></div>
+      <div class="race-time mono">~20 min</div>
+    </div>
+    <div class="race-note">logarithmic scale — every step right is 10× slower</div>
+  </div>
+
+  <div class="speed-cards">
+    <div class="speed-card">
+      <div class="big mono">≈3,000×</div>
+      <p>faster than a single Monero confirmation when paying over Lightning — 40 ms vs 2 minutes.</p>
+    </div>
+    <div class="speed-card">
+      <div class="big mono">0</div>
+      <p>block waits for a Lightning payment. Signatures exchange directly between the two wallets; miners are not involved.</p>
+    </div>
+    <div class="speed-card">
+      <div class="big mono">~40×</div>
+      <p>faster on-chain too: DriveCoin targets 1-second demo blocks, Monero targets 2-minute blocks.</p>
+    </div>
+  </div>
+
+  <p class="fineprint">Monero figures are mainnet averages (2-minute block target; exchanges commonly
+  require ~10 confirmations). DriveCoin figures are measured on this prototype chain — block time is a
+  1-second demo target; the same design at Monero's 2-minute target would still settle Lightning
+  payments in ~40 ms. Monero has no Lightning network — its only settlement path is on-chain.</p>
+</section>
+
+<section id="tech" class="section">
+  <h2>How it works</h2>
+  <p class="lead">A CryptoNote-style core with an off-chain Lightning layer — the whole node is pure Python with zero dependencies.</p>
+<pre class="arch">
+            wallets
+   (view-key scan · spend-key sign)
+            │  tx = ring sigs + range proofs
+            │       + one-time stealth outputs
+            ▼
+  ┌───── consensus / validation ─────┐
+  │ PoW blocks · mempool             │
+  │ key-image double-spend firewall  │
+  │ ΣC_in − ΣC_out = fee·G           │   amounts never appear in clear
+  └───────────────┬──────────────────┘
+                  │  2-of-2 channel funding (one block)
+                  ▼
+        ⚡ Lightning state channels
+        payments ~40 ms · no mining
+        cooperative close settles on-chain
+</pre>
+  <div class="grid two">
+    <div class="panel">
+      <h3>On-chain: private settlement</h3>
+      <ol>
+        <li>The sender mixes the real input into a ring of decoy outputs</li>
+        <li>Amounts are hidden in Pedersen commitments; each output pays a one-time stealth address</li>
+        <li>Range proofs certify the amounts are positive; ring signatures certify ownership; key images prevent double-spends</li>
+        <li>Nodes check that the commitments balance — without seeing a single amount</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h3>Off-chain: instant payments</h3>
+      <ol>
+        <li>Two wallets lock funds in a 2-of-2 channel output on-chain (one block)</li>
+        <li>Payments exchange signed state updates — both Schnorr signatures, ~40 ms, zero mining</li>
+        <li>A cooperative close spends the funding output and pays each side its final balance</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="api" class="section">
+  <h2>Public API</h2>
+  <p class="lead">Read-only, no key required — the same data this page displays.</p>
+  <div class="api">
+    <div class="row"><code>GET /api/info</code><span>chain summary: height, difficulty, emission, next reward</span></div>
+    <div class="row"><code>GET /api/chain</code><span>recent block summaries</span></div>
+    <div class="row"><code>GET /api/mempool</code><span>pending transactions</span></div>
+  </div>
+</section>
+
+<footer>
+  <div><b>DriveCoin</b> · drivecoinproject.online</div>
+  <div class="muted">CryptoNote-style privacy chain · Lightning channels · 50M hard cap · pure Python</div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

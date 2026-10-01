@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download the DriveCoin Miner — Windows &amp; Linux, CLI &amp; GUI</title>
+<meta name="description" content="Standalone DriveCoin miner for Windows and Linux: command-line and graphical builds, single executables, no installation needed. Mine the prototype privacy chain over HTTPS.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+<style>
+.dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin:34px 0}
+.dl-card{background:rgba(17,23,38,.72);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:8px}
+.dl-card h3{font-size:17px;display:flex;align-items:center;gap:10px;margin-bottom:2px}
+.dl-card .os{font-size:12.5px;color:var(--muted)}
+.dl-card .file{font-family:var(--mono);font-size:11.5px;color:var(--muted);word-break:break-all}
+.btn-dl{margin-top:14px;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(90deg,#4fc3a1,#3ba586);color:#06251c;font-weight:700;padding:12px 20px;border-radius:11px;text-decoration:none;transition:filter .15s}
+.btn-dl:hover{filter:brightness(1.1)}
+.dl-card.src .btn-dl{background:linear-gradient(90deg,#f0b429,#d99e17)}
+.meta{font-size:12.5px;color:var(--muted)}
+.warn{border:1px solid rgba(240,180,41,.35);background:rgba(240,180,41,.06);color:#f4cd77;border-radius:12px;padding:14px 18px;font-size:13.5px;margin:18px 0}
+.checksums{background:rgba(10,14,20,.7);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:10px}
+.checksums h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.checksums code{display:block;font-size:11px;line-height:1.9;color:var(--muted);word-break:break-all}
+.checksums b{color:var(--text);font-weight:600}
+code.hash{color:#4fc3a1}
+.usage{background:rgba(10,14,20,.7);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-top:22px}
+.usage h3{font-size:15px;margin-bottom:12px}
+.usage pre{background:#0a0e14;border:1px solid var(--line);border-radius:9px;padding:14px 16px;overflow-x:auto;font-size:12.5px;line-height:1.8;color:#cde3d8}
+.usage pre .c{color:#5b6b7d}
+.usage pre .g{color:#4fc3a1}
+.platform-icons{font-size:22px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="/">
+    <svg width="26" height="26" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <circle cx="32" cy="32" r="29" stroke="#4fc3a1" stroke-width="4"/>
+      <path d="M35 12 L19 37 h11 L29 52 L47 27 h-12 z" fill="#f0b429"/>
+    </svg>
+    <span>Drive<span class="grad">Coin</span></span>
+  </a>
+  <div class="links">
+    <a href="/#features">Features</a>
+    <a href="/#live">Live chain</a>
+    <a href="https://scan.drivecoinproject.online">Explorer</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>Download the <span class="grad">miner</span>, <span class="grad">node</span> &amp; <span class="grad">wallet</span></h1>
+  <p class="sub">Standalone builds for the DriveCoin prototype privacy chain —
+  single executables, no installation. The miner talks HTTPS straight to
+  <span class="mono">scan.drivecoinproject.online</span>; the node joins the
+  public network over P2P; the wallet manages your money.</p>
+</header>
+
+<main>
+
+<div class="warn">🔐 Wallet keys are generated and stored <b>on your machine only</b> — keep the
+<code>wallets.json</code> / <code>miner_wallet.json</code> file safe.</div>
+
+<div class="sub-h" id="wallet">Manage your money — Wallet</div>
+<p class="lead" style="margin-bottom:18px">Create wallets, scan your balance with the view key, send
+confidential transactions and run Lightning channels. Works with a local node or the public chain —
+the same <code>wallets.json</code> format as <code>wallet_app.py</code>.</p>
+
+<div class="dl-grid">
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🪟</span> Wallet CLI — Windows</h3>
+    <div class="os">Windows 10/11 x64 · command line</div>
+    <div class="file">drivecoin-wallet-cli-windows-x64.exe</div>
+    <div class="meta">Commands: <code>new · list · address · scan · send · ln</code>. <code>--help</code> for all options.</div>
+    <a class="btn-dl" href="/download/drivecoin-wallet-cli-windows-x64.exe" download>⬇ Download .exe</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🐧</span> Wallet CLI — Linux</h3>
+    <div class="os">Linux x86-64 · terminal</div>
+    <div class="file">drivecoin-wallet-cli-linux-x64</div>
+    <div class="meta">Then: <code>chmod +x drivecoin-wallet-cli-linux-x64 &amp;&amp; ./drivecoin-wallet-cli-linux-x64</code></div>
+    <a class="btn-dl" href="/download/drivecoin-wallet-cli-linux-x64" download>⬇ Download binary</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🪟</span> Wallet GUI — Windows</h3>
+    <div class="os">Windows 10/11 x64 · graphical (Tkinter)</div>
+    <div class="file">drivecoin-wallet-ui-windows-x64.exe</div>
+    <div class="meta">Create/switch wallets, live balance, send confidential tx — point at a local or remote node.</div>
+    <a class="btn-dl" href="/download/drivecoin-wallet-ui-windows-x64.exe" download>⬇ Download .exe</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🐧</span> Wallet GUI — Linux</h3>
+    <div class="os">Linux x86-64 · graphical (Tkinter)</div>
+    <div class="file">drivecoin-wallet-ui-linux-x64</div>
+    <div class="meta"><code>chmod +x</code> then run from a desktop terminal. Needs a display.</div>
+    <a class="btn-dl" href="/download/drivecoin-wallet-ui-linux-x64" download>⬇ Download binary</a>
+  </div>
+
+  <div class="dl-card src">
+    <h3><span class="platform-icons">📦</span> Wallet source code</h3>
+    <div class="os">Any platform with Python 3.8+ · pure standard library</div>
+    <div class="file">drivecoin-wallet-src-1.0.zip</div>
+    <div class="meta">wallet_cli.py · wallet_ui.py · wallet_lib.py · core.py · README-WALLET.md</div>
+    <a class="btn-dl" href="/download/drivecoin-wallet-src-1.0.zip" download>⬇ Download .zip</a>
+  </div>
+
+</div>
+
+<div class="sub-h">Mine the public chain</div>
+<p class="lead" style="margin-bottom:18px">Connect to the live DriveCoin chain at
+<code>scan.drivecoinproject.online</code> — no setup, rewards go straight to your
+wallet.</p>
+
+<div class="dl-grid">
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🪟</span> Miner CLI — Windows</h3>
+    <div class="os">Windows 10/11 x64 · command line</div>
+    <div class="file">drivecoin-miner-cli-windows-x64.exe</div>
+    <div class="meta">Double-click-friendly: runs in a terminal. <code>--help</code> for all options.</div>
+    <a class="btn-dl" href="/download/drivecoin-miner-cli-windows-x64.exe" download>⬇ Download .exe</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🐧</span> Miner CLI — Linux</h3>
+    <div class="os">Linux x86-64 · terminal</div>
+    <div class="file">drivecoin-miner-cli-linux-x64</div>
+    <div class="meta">Then: <code>chmod +x drivecoin-miner-cli-linux-x64 &amp;&amp; ./drivecoin-miner-cli-linux-x64</code></div>
+    <a class="btn-dl" href="/download/drivecoin-miner-cli-linux-x64" download>⬇ Download binary</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🪟</span> Miner GUI — Windows</h3>
+    <div class="os">Windows 10/11 x64 · graphical (Tkinter)</div>
+    <div class="file">drivecoin-miner-ui-windows-x64.exe</div>
+    <div class="meta">Point-and-click: create a wallet, press <b>Start mining</b>, watch the rewards arrive.</div>
+    <a class="btn-dl" href="/download/drivecoin-miner-ui-windows-x64.exe" download>⬇ Download .exe</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🐧</span> Miner GUI — Linux</h3>
+    <div class="os">Linux x86-64 · graphical (Tkinter)</div>
+    <div class="file">drivecoin-miner-ui-linux-x64</div>
+    <div class="meta"><code>chmod +x</code> then run from a desktop terminal. Needs a display (not headless).</div>
+    <a class="btn-dl" href="/download/drivecoin-miner-ui-linux-x64" download>⬇ Download binary</a>
+  </div>
+
+  <div class="dl-card src">
+    <h3><span class="platform-icons">📦</span> Source code</h3>
+    <div class="os">Any platform with Python 3.8+ · pure standard library</div>
+    <div class="file">drivecoin-miner-src-1.0.zip</div>
+    <div class="meta">Read the cryptography: Pedersen commitments, stealth addresses, PoW grinding. Run with <code>python miner.py</code>.</div>
+    <a class="btn-dl" href="/download/drivecoin-miner-src-1.0.zip" download>⬇ Download .zip</a>
+  </div>
+
+</div>
+
+<div class="sub-h" id="node">Run your own node — P2P</div>
+<p class="lead" style="margin-bottom:18px">A self-contained DriveCoin node with <b>full P2P</b>: point it at
+<code>--peer https://scan.drivecoinproject.online</code> and a fresh node joins the public network,
+syncs the whole chain in seconds and stays in sync — blocks you mine are broadcast to every peer and
+appear on the explorer immediately. Or run an isolated private network with friends over LAN.</p>
+
+<div class="dl-grid">
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🪟</span> Node CLI — Windows</h3>
+    <div class="os">Windows 10/11 x64 · command line</div>
+    <div class="file">drivecoin-node-cli-windows-x64.exe</div>
+    <div class="meta">Runs an API node on <code>127.0.0.1:8000</code>. Chain persists to <code>node_chain.json</code> next to the exe.</div>
+    <a class="btn-dl" href="/download/drivecoin-node-cli-windows-x64.exe" download>⬇ Download .exe</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🐧</span> Node CLI — Linux</h3>
+    <div class="os">Linux x86-64 · terminal</div>
+    <div class="file">drivecoin-node-cli-linux-x64</div>
+    <div class="meta"><code>chmod +x</code> then run. Ctrl+C saves the chain. <code>--port</code>/<code>--bind</code>/<code>--datafile</code> options.</div>
+    <a class="btn-dl" href="/download/drivecoin-node-cli-linux-x64" download>⬇ Download binary</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🪟</span> Node GUI — Windows</h3>
+    <div class="os">Windows 10/11 x64 · graphical (Tkinter)</div>
+    <div class="file">drivecoin-node-ui-windows-x64.exe</div>
+    <div class="meta">Live blocks, mempool and log in a window. Press <b>Start Node</b> and go.</div>
+    <a class="btn-dl" href="/download/drivecoin-node-ui-windows-x64.exe" download>⬇ Download .exe</a>
+  </div>
+
+  <div class="dl-card">
+    <h3><span class="platform-icons">🐧</span> Node GUI — Linux</h3>
+    <div class="os">Linux x86-64 · graphical (Tkinter)</div>
+    <div class="file">drivecoin-node-ui-linux-x64</div>
+    <div class="meta">Same windowed node for the desktop. Needs a display (not headless).</div>
+    <a class="btn-dl" href="/download/drivecoin-node-ui-linux-x64" download>⬇ Download binary</a>
+  </div>
+
+  <div class="dl-card src">
+    <h3><span class="platform-icons">📦</span> Node source code</h3>
+    <div class="os">Any platform with Python 3.8+ · pure standard library</div>
+    <div class="file">drivecoin-node-src-1.0.zip</div>
+    <div class="meta">node_headless.py (CLI) · node_app.py (GUI) · wallet_app.py · core.py · README-NODE.md</div>
+    <a class="btn-dl" href="/download/drivecoin-node-src-1.0.zip" download>⬇ Download .zip</a>
+  </div>
+
+</div>
+
+<div class="usage">
+  <h3>Quick start — your own node on the public network (2 minutes)</h3>
+  <pre><span class="c"># 1. start a node joined to the public network (CLI…)</span>
+drivecoin-node-cli-windows-x64.exe --peer <span class="g">https://scan.drivecoinproject.online</span>
+
+<span class="c"># 2. …or GUI: open drivecoin-node-ui, press Start Node, add the peer in the P2P tab</span>
+
+<span class="c"># 3. mine on YOUR node — the block broadcasts to every peer automatically</span>
+drivecoin-miner-cli-windows-x64.exe --node http://127.0.0.1:8000 --once
+
+<span class="c"># 4. manage your money with the standalone wallet</span>
+drivecoin-wallet-cli-windows-x64.exe new alice
+drivecoin-wallet-cli-windows-x64.exe send alice &lt;recipient&gt; 10</pre>
+  <p class="meta" style="margin-top:14px">Sync model, reorg rules, API &amp; security notes → <b>README-NODE.md</b> in the node source zip. Wallet commands → <b>README-WALLET.md</b> in the wallet source zip.</p>
+</div>
+
+<section class="usage">
+  <h3>Quick start — CLI (public chain)</h3>
+  <pre><span class="c"># mine forever with an auto-generated wallet (rewards are yours)</span>
+drivecoin-miner-cli-windows-x64.exe
+
+<span class="c"># mine exactly one block and stop</span>
+drivecoin-miner-cli-windows-x64.exe <span class="g">--once</span>
+
+<span class="c"># check your balance any time</span>
+drivecoin-miner-cli-windows-x64.exe <span class="g">--rescan</span></pre>
+  <h3 style="margin-top:18px">Quick start — GUI</h3>
+  <pre>open the app → <span class="g">New wallet…</span> → <span class="g">▶ Start mining</span> → watch hashrate &amp; rewards live → <span class="g">■ Stop</span></pre>
+  <p class="meta" style="margin-top:14px">Full documentation: options, how grinding works, troubleshooting → see <b>README-MINER.md</b> inside the source zip.</p>
+</section>
+
+<section class="checksums">
+  <h3>SHA-256 checksums</h3>
+  <code>see <b>checksums.txt</b> — verify with <b>Get-FileHash &lt;file&gt;</b> (PowerShell) or <b>sha256sum &lt;file&gt;</b> (Linux)</code>
+  <div id="sums" style="margin-top:10px"><code>loading…</code></div>
+</section>
+
+</main>
+
+<footer>
+  <div><b>DriveCoin</b> — a privacy blockchain prototype (CryptoNote-style).</div>
+  <div class="meta">Pedersen commitments · stealth addresses · ring signatures · range proofs · 50M hard cap</div>
+</footer>
+
+<script>
+fetch('/download/checksums.txt')
+  .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
+  .then(function (t) {
+    var html = t.trim().split('\n').map(function (line) {
+      var m = line.match(/^([0-9a-f]{64})\s+\*?(.+)$/);
+      if (!m) { return ''; }
+      return '<code><b>' + m[2] + '</b><br><span class="hash">' + m[1] + '</span></code>';
+    }).join('');
+    document.getElementById('sums').innerHTML = html || '<code>checksums unavailable</code>';
+  })
+  .catch(function () {
+    document.getElementById('sums').innerHTML = '<code>checksums unavailable</code>';
+  });
+</script>
+</body>
+</html>
